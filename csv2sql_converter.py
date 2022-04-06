@@ -1,5 +1,5 @@
 
-import sys, os, csv
+import sys, os, csv, random
 
 SQL_SYNTAX = [
     "Date",
@@ -9,9 +9,17 @@ SQL_SYNTAX = [
 ]
 
 SQL_DIR = "../sql"
-O_DIR = "/generated_views"
+O_DIR = f"/generated_views_{str(random.randint(1e+4, 1e+5))}"
 
-HELP_STRING = """ """
+
+HELP_STRING = """This program converts .csv to .sql, here are some of the options:\n
+\t -o, --one-file, writes all inputs to one file\n
+\t -i, --insert, only creates insert SQL\n
+\t -t, --table, only create table SQL\n
+\t -h, --help, shows this message\n
+\t -n, --nothing, just prints dosent write\n
+directories must not be empty, no input limit.
+"""
 
 def format_string(string):
     string = string.replace(" - ", "_")
